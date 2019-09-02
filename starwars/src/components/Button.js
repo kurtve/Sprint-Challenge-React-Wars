@@ -3,9 +3,9 @@ import React from "react";
 const Button = (props) => {
 
 	return (
-		<div onClick={props.handler} className={props.class}>
-			<code>{props.label}</code>
-		</div>
+		<button onClick={props.handler} className={props.active ? 'button active' : 'button inactive'}>
+			{props.label}
+		</button>
 	);
 
 };

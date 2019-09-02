@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import callAPI from './components/callAPI.js';
 import CardHolder from './components/CardHolder.js';
+import Button from './components/Button.js';
 
 
 const App = () => {
@@ -25,11 +26,11 @@ const App = () => {
 
 
 
-	const previousHandler = () => {
+	const previousPage = () => {
 		console.log('previous');
 	};
 
-	const nextHandler = () => {
+	const nextPage = () => {
 		console.log('next');
 	};
 
@@ -46,6 +47,10 @@ const App = () => {
 		return (
 			<div className="App">
 				<h1 className="Header">React Wars</h1>
+				<div className='button-bar'>
+					<Button handler={previousPage} active={!(!people.previous)} label='Previous Page'/>
+					<Button handler={nextPage} active={!(!people.next)} label='Next Page'/>
+				</div>
 				<CardHolder people={people.results} />
 			</div>
 		);

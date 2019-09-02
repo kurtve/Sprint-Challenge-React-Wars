@@ -1,12 +1,16 @@
-import React from "react";
+
+import React from 'react';
+import Card from './Card.js';
+
 
 const CardHolder = (props) => {
 
 	// display a list of SW character cards
+	console.log(props.people);
 
 	return (
 		<div className='card-holder'>
-			<p>A list of characters will go here</p>
+			{props.people.map((person, idx) => ( <Card key={idx} person={person} /> ) )}
 		</div>
 	);
 

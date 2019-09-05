@@ -1,8 +1,26 @@
+
 .App {
-  text-align: center;
+	text-align: center;
 }
+
 .Header {
-  color: #443e3e;
-  text-shadow: 1px 1px 5px #fff;
+	color: #443e3e;
+	text-shadow: 1px 1px 5px #fff;
+
+	font-size: 6rem;
+	font-weight: bold;
+	margin: 20px;
 }
-/* write your parent styles in here for your App.js */
+
+.loading {
+	font-size: 4rem;
+	font-weight: bold;
+	margin: 60px;
+}
+
+.card-holder {
+	font-size: 3rem;
+	font-weight: bold;
+	margin: 40px;
+}
+

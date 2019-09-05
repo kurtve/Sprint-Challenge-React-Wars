@@ -1,19 +1,60 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import callAPI from './components/callAPI.js';
+import CardHolder from './components/CardHolder.js';
+import Button from './components/Button.js';
+
 
 const App = () => {
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
 
-  // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
+	const SWAPIPeopleURL = 'https://swapi.co/api/people/';
 
-  return (
-    <div className="App">
-      <h1 className="Header">React Wars</h1>
-    </div>
-  );
+	const initialPeople = {
+		count: 0,
+		next: null,
+		previous: null,
+		results: []
+	};
+
+	const [people, updatePeople] = useState(initialPeople);
+
+	// call the SW api to load our people information
+	useEffect(() => {
+		callAPI(SWAPIPeopleURL, updatePeople);
+	}, [SWAPIPeopleURL]);
+
+
+
+	const previousPage = () => {
+		console.log('previous');
+	};
+
+	const nextPage = () => {
+		console.log('next');
+	};
+
+
+
+	if (people.results.length === 0) {
+		return (
+			<div className="App">
+				<h1 className="Header">React Wars</h1>
+				<h3 className="loading">Loading...</h3>
+			</div>
+		);
+	} else {
+		return (
+			<div className="App">
+				<h1 className="Header">React Wars</h1>
+				<div className='button-bar'>
+					<Button handler={previousPage} active={!(!people.previous)} label='Previous Page'/>
+					<Button handler={nextPage} active={!(!people.next)} label='Next Page'/>
+				</div>
+				<CardHolder people={people.results} />
+			</div>
+		);
+	}
 }
 
 export default App;
